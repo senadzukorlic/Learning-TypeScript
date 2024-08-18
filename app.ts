@@ -1,42 +1,30 @@
-// const person: {
-//   name: string
-//   age: number
-//   hobbies: string[]
-//   role: [number, string]
-// } = {
-//   // const person = {
-//   name: "Senad",
-//   age: 23,
-//   hobbies: ["Sports", "Programing"],
-//   role: [2, "author"],
-// }
-
-enum Role { //enum type
-  ADMIN,
-  READ_ONLY,
-  AUTHOR = 10,
+function combine(
+  input1: number | string,
+  input2: number | string,
+  resultConversion: string
+) {
+  let res
+  if (
+    (typeof input1 === "number" && typeof input2 === "number") ||
+    resultConversion === "as-number"
+  ) {
+    res = +input1 + +input2
+  } else {
+    res = input1.toString() + input2.toString()
+  }
+  return res
+  //   if (resultConversion === "as-number") {
+  //     return +res
+  //   } else {
+  //     return res.toString()
+  //   }
 }
 
-const person = {
-  name: "Senad",
-  age: 23,
-  hobbies: ["Sports", "Programing"],
-  role: Role.ADMIN,
-}
+const combineAges = combine(30, 26, "as-number")
+console.log(combineAges)
 
-// person.role = [5, "dado"]
+const combineStringAges = combine("30", "26", "as-number")
+console.log(combineStringAges)
 
-// person.role[0] = 10  //tuple type
-
-let favoriteActivities: string[]
-
-favoriteActivities = ["Sports"]
-
-console.log(person.name)
-
-for (const hobby of person.hobbies) {
-  console.log(hobby)
-}
-if (person.role === Role.ADMIN) {
-  console.log("is admin")
-}
+const combineNames = combine("Senad", "Zukorlic", "as-text")
+console.log(combineNames)
